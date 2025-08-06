@@ -1,1 +1,1 @@
-Api Recaudo
+Api Seytec
