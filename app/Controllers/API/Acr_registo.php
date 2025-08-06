@@ -126,7 +126,7 @@ class Acr_registo extends ResourceController
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
             $headers = array();
             $headers[] = 'Accept: application/json';
-            $headers[] = 'Api-Key: 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';
+            $headers[] = 'Api-Key: ';
             $headers[] = 'Content-Type: application/json';
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             $result = curl_exec($ch);
