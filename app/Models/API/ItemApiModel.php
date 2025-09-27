@@ -14,7 +14,7 @@ class ItemApiModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = true;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['nom_ite' ,'des_ite', 'cod_uni_ite', 'des_ite' , 'mar_ite' , 'pre_ite' ,'ser_ite', 'pro_ite' ];
+	protected $allowedFields        = ['nom_ite' ,'des_ite', 'cod_uni_ite', 'des_ite' , 'mar_ite' , 'pre_ite' ,'ser_ite', 'pro_ite','iva_ite' ];
 
 	// Dates
 	protected $useTimestamps        = true;
@@ -43,7 +43,7 @@ class ItemApiModel extends Model
 	public function listatardatos($id = 0)
 	{
 
-		$array = ['cod_ite as id'   ,'nom_ite', ' pre_ite', 'cod_uni_ite unidad', 'ser_ite', "concat(nom_ite, ' - ',ser_ite) as dataselector", 'mar_ite', 'nom_uni', 'cod_uni_ite' ];
+		$array = ['cod_ite as id'   ,'nom_ite', ' pre_ite', 'cod_uni_ite unidad', 'ser_ite', "concat(nom_ite, ' - ',ser_ite) as dataselector", 'mar_ite', 'nom_uni', 'cod_uni_ite', 'iva_ite' ];
 		
 		if ($id == 0) {
 			$data = $this->select($array)->join('unidadesmedida' ,'cod_uni_ite=cod_uni', 'left' )->findAll();
@@ -64,6 +64,7 @@ class ItemApiModel extends Model
 			'mar_ite' => $request->getVar('mar_ite'),
 			'cod_uni_ite' => $request->getVar('cod_uni_ite'),
 			'pre_ite' => $request->getVar('pre_ite'),
+			'iva_ite' => $request->getVar('iva_ite'),
 		];
 
 		// print_r($data);
@@ -88,6 +89,7 @@ class ItemApiModel extends Model
 			'mar_ite' => $request->getVar('mar_ite'),
 			'cod_uni_ite' => $request->getVar('cod_uni_ite'),
 			'pre_ite' => $request->getVar('pre_ite'),
+			'iva_ite' => $request->getVar('iva_ite'),
 		];
 		
 	
