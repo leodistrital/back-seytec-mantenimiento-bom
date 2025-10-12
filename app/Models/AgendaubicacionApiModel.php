@@ -119,7 +119,7 @@ class AgendaubicacionApiModel extends Model
 		$caso1data = $agenda->where($wherecaso1)->find();
 		// echo $agenda->getLastQuery();
 
-/*
+		/*
 		 if ($caso1data) {
 		 	echo "caso 1";
 			 echo $agenda->getLastQuery();
@@ -185,11 +185,11 @@ class AgendaubicacionApiModel extends Model
 		$intervaloFinal = $request->getVar('hor_fin_age') * 60 + $request->getVar('min_fin_age');
 		$persona = $request->getVar('idacreditado'); //cod_ubi_age
 		$fecha = $request->getVar('fec_age'); //fec_age
-	
+
 
 		//casso 1 fin >62 and fin <184
-		$wherecaso1 = ['int_ini_age>' => $intervaloInicial, 'int_ini_age <' => $intervaloFinal, 'int_fin_age>' => $intervaloFinal, 'cod_acr_dap' => $persona, 'fec_age' => $fecha  ];
-		$caso1data = $agenda->join('detagendaparticioantes', 'cod_age_dap=cod_age')->where($wherecaso1)->where('detagendaparticioantes.deleted_at IS NULL',null,false)->find();
+		$wherecaso1 = ['int_ini_age>' => $intervaloInicial, 'int_ini_age <' => $intervaloFinal, 'int_fin_age>' => $intervaloFinal, 'cod_acr_dap' => $persona, 'fec_age' => $fecha];
+		$caso1data = $agenda->join('detagendaparticioantes', 'cod_age_dap=cod_age')->where($wherecaso1)->where('detagendaparticioantes.deleted_at IS NULL', null, false)->find();
 
 		/*
 		 if ($caso1data) {
@@ -200,8 +200,8 @@ class AgendaubicacionApiModel extends Model
 
 		//caso 2 ini < 62 and fin > 62
 		// 	  90 > 62 and  and 120 < 184
-		$wherecaso2 = ['int_ini_age >' => $intervaloInicial, 'int_fin_age >' => $intervaloFinal, 'int_ini_age<' => $intervaloFinal, 'cod_acr_dap' => $persona, 'fec_age' => $fecha ];
-		$caso2data = $agenda->join('detagendaparticioantes', 'cod_age_dap=cod_age')->where($wherecaso2)->where('detagendaparticioantes.deleted_at IS NULL',null,false)->find();
+		$wherecaso2 = ['int_ini_age >' => $intervaloInicial, 'int_fin_age >' => $intervaloFinal, 'int_ini_age<' => $intervaloFinal, 'cod_acr_dap' => $persona, 'fec_age' => $fecha];
+		$caso2data = $agenda->join('detagendaparticioantes', 'cod_age_dap=cod_age')->where($wherecaso2)->where('detagendaparticioantes.deleted_at IS NULL', null, false)->find();
 		// echo $agenda->getLastQuery();
 		/* if ($caso2data) {
 		 	echo "caso 2";
@@ -212,8 +212,8 @@ class AgendaubicacionApiModel extends Model
 		//caso 3 
 		// 	  120 > 62 and  and 120 < 184 
 		$wherecaso3 = ['int_ini_age <=' => $intervaloInicial, 'int_fin_age >=' => $intervaloInicial, 'cod_acr_dap' => $persona, 'fec_age' => $fecha];
-		$caso3data = $agenda->join('detagendaparticioantes', 'cod_age_dap=cod_age')->where($wherecaso3)->where('detagendaparticioantes.deleted_at IS NULL',null,false)->find();
-		 /*if ($caso3data) {
+		$caso3data = $agenda->join('detagendaparticioantes', 'cod_age_dap=cod_age')->where($wherecaso3)->where('detagendaparticioantes.deleted_at IS NULL', null, false)->find();
+		/*if ($caso3data) {
 		 	echo "caso 3";
 		 	echo $agenda->getLastQuery();
 		 }*/
@@ -222,12 +222,12 @@ class AgendaubicacionApiModel extends Model
 		//caso 4
 
 		$wherecaso4 = ['int_ini_age >=' => $intervaloInicial, 'int_fin_age <=' => $intervaloFinal, 'cod_acr_dap' => $persona, 'fec_age' => $fecha];
-		$caso4data = $agenda->join('detagendaparticioantes', 'cod_age_dap=cod_age')->where($wherecaso4)->where('detagendaparticioantes.deleted_at IS NULL',null,false)->find();
+		$caso4data = $agenda->join('detagendaparticioantes', 'cod_age_dap=cod_age')->where($wherecaso4)->where('detagendaparticioantes.deleted_at IS NULL', null, false)->find();
 		/* if ($caso4data) {
 		 	echo "caso 4";
 		 	echo $agenda->getLastQuery();
 		 }*/
-		
+
 
 
 

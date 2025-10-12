@@ -162,6 +162,9 @@ $routes->group('api', ['namespace' => 'App\Controllers\API'], ['filter' => 'auth
 		$routes->get('ubicacion', 'Ubicacaciones::parametros');
 		$routes->get('tipoequipo', 'Tipo_equipo::parametros');
 		$routes->get('unidadesmedida', 'Unidadesmedida::parametros');
+		$routes->get('capitulos', 'Capitulos::parametros');
+		$routes->get('listapartidasapu/(:any)', 'Capitulosbom::consultarapu/$1');
+		$routes->get('listaitemsbom/(:segment)/(:segment)' , 'Cuerpobomdetalle::listaitemsbom/$1/$2' );
 
 		// parte boom
 		// $routes->resource('unidadesmedida');
