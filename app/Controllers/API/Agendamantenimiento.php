@@ -24,6 +24,7 @@ class Agendamantenimiento extends ResourceController
     public function show($id = null)
     {
         $data = $this->model->listatardatos($id);
+        
         return $this->respond(array('data' => $data), 200);
     }
 
@@ -53,6 +54,24 @@ class Agendamantenimiento extends ResourceController
             'status' => 'Ok'
         ];
         return $this->respond($data, 200);
+    }
+
+
+
+    public function listaMantenimientosEqipos($codigoEquipo)
+    {
+        // echo $codigoEquipo;
+        // return 1;
+        $resp['data'] = $this->model->listaMantenimientosEqipos($codigoEquipo);
+        return $this->respond($resp, 200);
+    }
+
+     public function informecliente($codigoCliente)
+    {
+        // echo $codigoEquipo;
+        // return 1;
+        $resp['data'] = $this->model->informecliente($codigoCliente);
+        return $this->respond($resp, 200);
     }
 }
 /* fecha de creacion: 07-24-2025 02:17:09 pm */

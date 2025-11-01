@@ -14,7 +14,7 @@ class EquiposApiModel extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = true;
 	protected $protectFields        = true;
-	protected $allowedFields        = ["cod_equ as id", "nom_equ", "cod_cli_equ", "cod_sed_equ", "cod_teq_equ", "ser_equ", "mar_equ", "pro_equ", "mac_equ", "rak_equ", "ubi_equ", "tab_equ", "cto_equ", "pan_equ", "not_equ", "cod_ubi_equ", "qr_equ"];
+	protected $allowedFields        = ["cod_equ as id", "nom_equ", "cod_cli_equ", "cod_sed_equ", "cod_teq_equ", "ser_equ", "mar_equ", "pro_equ", "mac_equ", "rak_equ", "ubi_equ", "tab_equ", "cto_equ", "pan_equ", "not_equ", "cod_ubi_equ", "qr_equ",'id_equ_ama','ip_equ'];
 
 	// Dates
 	protected $useTimestamps        = true;
@@ -42,7 +42,7 @@ class EquiposApiModel extends Model
 
 	public function listatardatos($id = 0)
 	{
-		$array = ["cod_equ as id", "nom_equ", "cod_cli_equ", "cod_sed_equ", "cod_teq_equ", "ser_equ", "mar_equ", "pro_equ", "mac_equ", "rak_equ", "ubi_equ", "tab_equ", "cto_equ", "pan_equ", "not_equ", "cod_ubi_equ", "cliente.nom_cli as cliente", "ubicacaciones.nom_ubi as ubicacion", "sedes.nom_sed as sede", "tipo_equipo.nom_teq as tipo_equipo", "qr_equ"];
+		$array = ["cod_equ as id", "nom_equ", "cod_cli_equ", "cod_sed_equ", "cod_teq_equ", "ser_equ", "mar_equ", "pro_equ", "mac_equ", "rak_equ", "ubi_equ", "tab_equ", "cto_equ", "pan_equ", "not_equ", "cod_ubi_equ", "cliente.nom_cli as cliente", "ubicacaciones.nom_ubi as ubicacion", "sedes.nom_sed as sede", "tipo_equipo.nom_teq as tipo_equipo", "qr_equ",'ip_equ'];
 		if ($id == 0) {
 			$data = $this->select($array)->join('ubicacaciones', 'equipos.cod_ubi_equ = ubicacaciones.cod_ubi', 'left')
 			->join('sedes', 'equipos.cod_sed_equ = sedes.cod_sed', 'left')
@@ -59,7 +59,7 @@ class EquiposApiModel extends Model
 
 	public function guardar($request)
 	{
-		echo "llego a guardar";
+		// echo "llego a guardar";
 		$data = [
 			'nom_equ' => $request->getVar('nom_equ'),
 			'cod_cli_equ' => $request->getVar('cod_cli_equ'),
@@ -76,7 +76,7 @@ class EquiposApiModel extends Model
 			'pan_equ' => $request->getVar('pan_equ'),
 			'not_equ' => $request->getVar('not_equ'),
 			'cod_ubi_equ' => $request->getVar('cod_ubi_equ'),
-			'qr_equ' => $request->getVar('qr_equ')
+			'ip_equ' => $request->getVar('ip_equ')
 
 		];
 
@@ -107,7 +107,8 @@ class EquiposApiModel extends Model
 			'pan_equ' => $request->getVar('pan_equ'),
 			'not_equ' => $request->getVar('not_equ'),
 			'cod_ubi_equ' => $request->getVar('cod_ubi_equ'),
-			'qr_equ' => $request->getVar('qr_equ')
+			'qr_equ' => $request->getVar('qr_equ'),
+			'ip_equ' => $request->getVar('ip_equ')
 
 		];
 		$confirmacion = $this->save($data);

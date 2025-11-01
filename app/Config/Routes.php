@@ -151,8 +151,6 @@ $routes->group('api', ['namespace' => 'App\Controllers\API'], ['filter' => 'auth
 
 
 	$routes->group('parametros', ['namespace' => 'App\Controllers\API'], function ($routes) {
-
-
 		// parametros Seytec
 		$routes->get('departamentos', 'Departamentos::parametros');
 		$routes->get('cliente', 'Cliente::parametros');
@@ -165,10 +163,11 @@ $routes->group('api', ['namespace' => 'App\Controllers\API'], ['filter' => 'auth
 		$routes->get('capitulos', 'Capitulos::parametros');
 		$routes->get('listapartidasapu/(:any)', 'Capitulosbom::consultarapu/$1');
 		$routes->get('listaitemsbom/(:segment)/(:segment)' , 'Cuerpobomdetalle::listaitemsbom/$1/$2' );
+		$routes->get('agendamantenimiento/(:any)', 'Agendamantenimiento::listaMantenimientosEqipos/$1');
+		$routes->get('informeagendamantenimientocliente/(:any)', 'Agendamantenimiento::informecliente/$1');
 
 		// parte boom
 		// $routes->resource('unidadesmedida');
-		
 		// $routes->resource('subpartidaitem');
 		// $routes->resource('cliente');
 		// $routes->resource('partida');
