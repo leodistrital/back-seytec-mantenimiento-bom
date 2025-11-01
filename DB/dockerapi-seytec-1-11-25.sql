@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: database:3306
--- Tiempo de generación: 12-10-2025 a las 01:41:18
+-- Tiempo de generación: 01-11-2025 a las 21:00:56
 -- Versión del servidor: 10.6.11-MariaDB-1:10.6.11+maria~ubu2004
 -- Versión de PHP: 8.0.27
 
@@ -134,6 +134,7 @@ CREATE TABLE `agendamantenimiento` (
   `des_ama` text DEFAULT NULL COMMENT 'descripcion',
   `cod_equ_ama` varchar(10) DEFAULT NULL COMMENT 'codigo equipo',
   `sta_ama` varchar(20) DEFAULT NULL COMMENT 'pendiente, cerrado, cancelado',
+  `id_equ_ama` int(6) DEFAULT NULL COMMENT 'id de la tabla equipos',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -143,8 +144,11 @@ CREATE TABLE `agendamantenimiento` (
 -- Volcado de datos para la tabla `agendamantenimiento`
 --
 
-INSERT INTO `agendamantenimiento` (`cod_ama`, `fec_ama`, `tip_ama`, `des_ama`, `cod_equ_ama`, `sta_ama`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(3, '2025-08-05', 'Dar de baja', 'notasssss', 'ID-2001', 'Pendiente', '2025-07-24 15:08:16', '2025-08-05 16:21:24', NULL);
+INSERT INTO `agendamantenimiento` (`cod_ama`, `fec_ama`, `tip_ama`, `des_ama`, `cod_equ_ama`, `sta_ama`, `id_equ_ama`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(3, '2025-08-05', 'Dar de baja', 'notasssss sdgsd sdf gsdgsdfgsdfhg sdfg', 'ID-2001', 'Pendiente', 211, '2025-07-24 15:08:16', '2025-10-14 15:28:57', NULL),
+(4, '2025-10-15', 'Correctivo', 'nota de control', 'ID-2001', 'Ejecutado', 211, '2025-10-14 12:18:48', '2025-10-14 12:19:32', NULL),
+(5, '2025-10-14', 'Correctivo', ' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'ID-2001', 'Cancelado', 211, '2025-10-14 13:06:44', '2025-10-14 13:06:44', NULL),
+(16, '2025-10-06', 'Correctivo', 'zzzzzzzzz', 'ID-2001', 'Ejecutado', 211, '2025-10-14 13:19:19', '2025-10-14 13:19:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -1002,7 +1006,8 @@ INSERT INTO `capitulosbom` (`cod_cbo`, `cod_bom_cbo`, `nom_cbo`, `can_cbo`, `tip
 (40, 20, 'EMT ', 30, '7', '2023-07-26 15:10:45', '2023-07-26 15:10:45', NULL),
 (41, 21, 'Descripcion Partida', 1000, '4', '2025-10-08 14:48:16', '2025-10-08 14:48:16', NULL),
 (42, 21, 'otra Descripcion Partida', 50, '3', '2025-10-08 15:42:47', '2025-10-08 15:42:47', NULL),
-(43, 21, 'Salida terminada en roseta, 120, incluye tubería PVC diámetro de ½\" y/o ¾ según se indique en plano, cable12 AWG, caja, soporte y accesorios (no incluye luminaria)', 120, '2', '2025-10-08 15:52:35', '2025-10-08 15:52:35', NULL);
+(43, 21, 'Salida terminada en roseta, 120, incluye tubería PVC diámetro de ½\" y/o ¾ según se indique en plano, cable12 AWG, caja, soporte y accesorios (no incluye luminaria)', 120, '2', '2025-10-08 15:52:35', '2025-10-08 15:52:35', NULL),
+(44, 21, 'Salida terminada en roseta, 120, incluye tubería PVC diámetro de ½\" y/o ¾ según se indique en plano, cable12 AWG, caja, soporte y accesorios (no incluye luminaria)', 5424, '2', '2025-10-14 16:18:58', '2025-10-14 16:18:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -1390,7 +1395,9 @@ INSERT INTO `cuerpobomdetalle` (`cod_cub`, `cod_bom_cub`, `cod_hed_cub`, `cod_ma
 (155, 21, 43, 67, 7978979, NULL, NULL, 78, '2025-10-08 17:05:36', '2025-10-08 17:05:36', NULL),
 (156, 21, 43, 68, 45456456, NULL, NULL, 67, '2025-10-08 17:05:55', '2025-10-08 17:05:55', NULL),
 (157, 21, 43, 153, 9999, NULL, NULL, 999, '2025-10-08 17:41:05', '2025-10-08 17:41:05', NULL),
-(158, 21, 43, 109, 9999, NULL, NULL, 898989, '2025-10-09 15:09:29', '2025-10-09 15:09:29', NULL);
+(158, 21, 43, 109, 9999, NULL, NULL, 898989, '2025-10-09 15:09:29', '2025-10-09 15:09:29', NULL),
+(159, 21, 43, 31, 5000, NULL, NULL, 100, '2025-10-14 16:11:18', '2025-10-14 16:11:18', NULL),
+(160, 21, 44, 3, 2000, NULL, NULL, 2, '2025-10-14 16:20:01', '2025-10-14 16:20:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -1716,6 +1723,7 @@ CREATE TABLE `equipos` (
   `pan_equ` varchar(250) DEFAULT NULL COMMENT 'numero de panel',
   `not_equ` text DEFAULT NULL COMMENT 'nota',
   `qr_equ` varchar(100) DEFAULT NULL COMMENT 'codigo del equipo',
+  `ip_equ` varchar(25) DEFAULT NULL COMMENT 'IP Dispositivo',
   `cod_ubi_equ` int(11) DEFAULT NULL COMMENT 'codigo ubucacion',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -1726,10 +1734,10 @@ CREATE TABLE `equipos` (
 -- Volcado de datos para la tabla `equipos`
 --
 
-INSERT INTO `equipos` (`cod_equ`, `nom_equ`, `cod_cli_equ`, `cod_sed_equ`, `cod_teq_equ`, `ser_equ`, `mar_equ`, `pro_equ`, `mac_equ`, `rak_equ`, `ubi_equ`, `tab_equ`, `cto_equ`, `pan_equ`, `not_equ`, `qr_equ`, `cod_ubi_equ`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Principal1', 5, 6, 1, 'serial', 'marca', 'arriendo', 'mac', 'puerto 100', 'detras del tablero', 'tablero 1', NULL, '5', 'una nota', NULL, 1, NULL, NULL, NULL),
-(211, '111111444', 4, 24, 4, 'serial44', 'marca44', '1', 'mac44', 'rack44', NULL, 'tablero 144', NULL, 'panel44', 'esta malito444', 'ID-2001', 1, '2025-07-02 20:27:50', '2025-07-03 14:44:33', NULL),
-(212, '1111119', 10, 6, 21, '3333999', '222299999', '1', '44499', '55555999', NULL, '66666999', NULL, '77777999', '999999111111', 'Generador de Códigos QR de TEC-IT', 3, '2025-07-14 20:22:41', '2025-07-15 14:51:13', NULL);
+INSERT INTO `equipos` (`cod_equ`, `nom_equ`, `cod_cli_equ`, `cod_sed_equ`, `cod_teq_equ`, `ser_equ`, `mar_equ`, `pro_equ`, `mac_equ`, `rak_equ`, `ubi_equ`, `tab_equ`, `cto_equ`, `pan_equ`, `not_equ`, `qr_equ`, `ip_equ`, `cod_ubi_equ`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Principal1', 5, 6, 1, 'serial', 'marca', 'arriendo', 'mac', 'puerto 100', 'detras del tablero', 'tablero 1', NULL, '5', 'una nota', NULL, '0.0.0.1', 1, NULL, '2025-10-26 10:14:55', NULL),
+(211, '111111444', 4, 24, 4, 'serial44', 'marca44', '1', 'mac44', 'rack44', NULL, 'tablero 144', NULL, 'panel44', 'esta malito444', 'ID-2001', NULL, 1, '2025-07-02 20:27:50', '2025-07-03 14:44:33', NULL),
+(212, '1111119', 10, 6, 21, '3333999', '222299999', '1', '44499', '55555999', NULL, '66666999', NULL, '77777999', '999999111111', 'Generador de Códigos QR de TEC-IT', NULL, 3, '2025-07-14 20:22:41', '2025-07-15 14:51:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -1836,9 +1844,15 @@ CREATE TABLE `galeriaimagenesdetalle` (
 
 INSERT INTO `galeriaimagenesdetalle` (`cod_dga`, `sec_dal`, `img_dal`, `des_dal`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 3, 'http://localhost/images/galeria/1754428703_474b0c1a9414834a14b2.jpeg', NULL, '2025-08-05 16:18:24', '2025-08-05 16:18:24', NULL),
-(2, 3, 'http://localhost/images/galeria/1754428721_47df7654757da9d96258.jpeg', NULL, '2025-08-05 16:18:41', '2025-08-05 16:18:41', NULL),
+(2, 3, 'http://localhost/images/galeria/1754428721_47df7654757da9d96258.jpeg', NULL, '2025-08-05 16:18:41', '2025-10-14 15:28:37', '2025-10-14 15:28:37'),
 (3, 3, 'http://localhost/images/galeria/1754428729_844aeef7db026d0324b0.jpeg', NULL, '2025-08-05 16:18:49', '2025-08-05 16:19:16', '2025-08-05 16:19:16'),
-(4, 3, 'http://localhost/images/galeria/1754428735_fbe363b92c0d2ef5885f.jpeg', NULL, '2025-08-05 16:18:56', '2025-08-05 16:18:56', NULL);
+(4, 3, 'http://localhost/images/galeria/1754428735_fbe363b92c0d2ef5885f.jpeg', NULL, '2025-08-05 16:18:56', '2025-10-14 15:28:34', '2025-10-14 15:28:34'),
+(5, 4, 'http://localhost/images/galeria/1760462355_971f10e6be02ea9d59b0.jpeg', NULL, '2025-10-14 12:19:15', '2025-10-14 12:19:15', NULL),
+(6, 4, 'http://localhost/images/galeria/1760462360_ae46988cbcb659b8a223.jpg', NULL, '2025-10-14 12:19:21', '2025-10-14 12:19:21', NULL),
+(7, 4, 'http://localhost/images/galeria/1760462368_3ecd706762760020b0aa.png', NULL, '2025-10-14 12:19:28', '2025-10-14 12:19:28', NULL),
+(8, 3, 'http://localhost/images/galeria/1760473699_73e05c766011aee2b91e.jpeg', NULL, '2025-10-14 15:28:20', '2025-10-14 15:28:40', '2025-10-14 15:28:40'),
+(9, 3, 'http://localhost/images/galeria/1760473728_7d128d31f0203e1671a8.png', NULL, '2025-10-14 15:28:48', '2025-10-14 15:28:48', NULL),
+(10, 3, 'http://localhost/images/galeria/1760473735_e3ed4d9c7d904e848882.jpeg', NULL, '2025-10-14 15:28:55', '2025-10-14 15:28:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -5476,7 +5490,7 @@ ALTER TABLE `agendalugares`
 -- AUTO_INCREMENT de la tabla `agendamantenimiento`
 --
 ALTER TABLE `agendamantenimiento`
-  MODIFY `cod_ama` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cod_ama` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `agendamiento`
@@ -5542,7 +5556,7 @@ ALTER TABLE `capitulos`
 -- AUTO_INCREMENT de la tabla `capitulosbom`
 --
 ALTER TABLE `capitulosbom`
-  MODIFY `cod_cbo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `cod_cbo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -5590,7 +5604,7 @@ ALTER TABLE `contenidos`
 -- AUTO_INCREMENT de la tabla `cuerpobomdetalle`
 --
 ALTER TABLE `cuerpobomdetalle`
-  MODIFY `cod_cub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `cod_cub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT de la tabla `departamentos`
@@ -5650,7 +5664,7 @@ ALTER TABLE `galeriaimagenes`
 -- AUTO_INCREMENT de la tabla `galeriaimagenesdetalle`
 --
 ALTER TABLE `galeriaimagenesdetalle`
-  MODIFY `cod_dga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cod_dga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `item`
