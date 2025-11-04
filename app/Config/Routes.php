@@ -206,69 +206,69 @@ $routes->group('api', ['namespace' => 'App\Controllers\API'], ['filter' => 'auth
 });
 
 
-/** rutas ajax */
-$routes->post('upload/(:any)', 'API\Archivos::upload/$1');
-// $routes->get('upload/(:any)', 'API\Archivos::upload/$1');
-$routes->post("login", "Login::index");
+	// /** rutas ajax */
+	// $routes->post('upload/(:any)', 'API\Archivos::upload/$1');
+	// // $routes->get('upload/(:any)', 'API\Archivos::upload/$1');
+	// $routes->post("login", "Login::index");
 
-//solo para pruebas
-$routes->post("login1", "Login::test");
+	// //solo para pruebas
+	// $routes->post("login1", "Login::test");
 
-$routes->post("verificar/(:any)", "Verificar::index/$1");
+	// $routes->post("verificar/(:any)", "Verificar::index/$1");
 
-/** rutas ajax */
+	/** rutas ajax */
 
-/** RUTAS PARA LA WEB */
-/*** home */
-$routes->get('/', 'Web\Home::index');
+	/** RUTAS PARA LA WEB */
+	/*** home */
+	// $routes->get('/', 'Web\Home::index');
 
-// $routes->get('/pagostest', 'Web\Home::pagostest');
-/** Menu 1 */
-$routes->get('/bam/(:any)', 'Web\Internas::contenidos/$1');
-/** Menu 2 */
-$routes->get('/convocatorias/(:any)', 'Web\Convocatorias::mostar/$1');
-/** Menu 3 */
-$routes->get('/seleccionados/(:any)/(:any)/', 'Web\Seleccionados::proyectos/$1/$2');
-/** Menu 4  programacion*/
-$routes->get('/programacion/(:any)/(:any)/', 'Web\Programacion::programacion/$1/$2');
-/** Menu 5  regiones */
-$routes->get('/regiones', 'Web\Regiones::contenidos');
-/** submenu  region */
-$routes->get('/region/(:any)', 'Web\Region::contenidos/$1');
-/** Menu 6  comunicados */
-$routes->get('/prensa', 'Web\Prensa::contenidos');
-/** Menu 6  historico */
-$routes->get('/ediciones', 'Web\Ediciones::contenidos');
-$routes->get('/ediciones/(:any)', 'Web\Ediciones::contenidos/$1');
-/** Menu 7  comunicados */
-$routes->get('/contacto', 'Web\Contacto::contenidos');
-//carga ventada flotante
-$routes->get('/seleccionado/resumen-persona/(:any)', 'Web\Seleccionados::resumenpersona/$1'); //carga ventada flotante
-$routes->get('/seleccionado/resumen-proyecto/(:any)', 'Web\Seleccionados::resumenproyecto/$1');
-$routes->get('/acreditaciones', 'Web\Acreditaciones::index');
-
-
-$routes->get('/infoacreditacion', 'Web\Registro::infoacreditacion');
-
-/** Formulario de registro   */
-$routes->get('/registro', 'Web\Registro::index');
-$routes->post('/registro', 'Web\Registro::crearRegistro');
-$routes->post('/registro/login', 'Web\Registro::iniciosesion');
-$routes->get('/registro/salir', 'Web\Registro::cerrar');
-
-$routes->get('/registro/olvide', 'Web\Registro::olvide');
-$routes->post('/registro/olvide', 'Web\Registro::envioolvide');
-$routes->get('/registro/recuperar/(:any)', 'Web\Registro::recuperar/$1'); //fata
-$routes->post('/registro/recuperar', 'Web\Registro::cambiorecuperar/'); // falta
+	// // $routes->get('/pagostest', 'Web\Home::pagostest');
+	// /** Menu 1 */
+	// $routes->get('/bam/(:any)', 'Web\Internas::contenidos/$1');
+	// /** Menu 2 */
+	// $routes->get('/convocatorias/(:any)', 'Web\Convocatorias::mostar/$1');
+	// /** Menu 3 */
+	// $routes->get('/seleccionados/(:any)/(:any)/', 'Web\Seleccionados::proyectos/$1/$2');
+	// /** Menu 4  programacion*/
+	// $routes->get('/programacion/(:any)/(:any)/', 'Web\Programacion::programacion/$1/$2');
+	// /** Menu 5  regiones */
+	// $routes->get('/regiones', 'Web\Regiones::contenidos');
+	// /** submenu  region */
+	// $routes->get('/region/(:any)', 'Web\Region::contenidos/$1');
+	// /** Menu 6  comunicados */
+	// $routes->get('/prensa', 'Web\Prensa::contenidos');
+	// /** Menu 6  historico */
+	// $routes->get('/ediciones', 'Web\Ediciones::contenidos');
+	// $routes->get('/ediciones/(:any)', 'Web\Ediciones::contenidos/$1');
+	// /** Menu 7  comunicados */
+	// $routes->get('/contacto', 'Web\Contacto::contenidos');
+	// //carga ventada flotante
+	// $routes->get('/seleccionado/resumen-persona/(:any)', 'Web\Seleccionados::resumenpersona/$1'); //carga ventada flotante
+	// $routes->get('/seleccionado/resumen-proyecto/(:any)', 'Web\Seleccionados::resumenproyecto/$1');
+	// $routes->get('/acreditaciones', 'Web\Acreditaciones::index');
 
 
-$routes->get('/registro/activacion/(:any)', 'Web\Registro::activar/$1');
-$routes->post('/registro/activacion', 'Web\Registro::confirmar');
+// $routes->get('/infoacreditacion', 'Web\Registro::infoacreditacion');
+
+	/** Formulario de registro   */
+	/* $routes->get('/registro', 'Web\Registro::index');
+	$routes->post('/registro', 'Web\Registro::crearRegistro');
+	$routes->post('/registro/login', 'Web\Registro::iniciosesion');
+	$routes->get('/registro/salir', 'Web\Registro::cerrar');
+
+	$routes->get('/registro/olvide', 'Web\Registro::olvide');
+	$routes->post('/registro/olvide', 'Web\Registro::envioolvide');
+	$routes->get('/registro/recuperar/(:any)', 'Web\Registro::recuperar/$1'); //fata
+	$routes->post('/registro/recuperar', 'Web\Registro::cambiorecuperar/'); // falta
+
+
+	$routes->get('/registro/activacion/(:any)', 'Web\Registro::activar/$1');
+	$routes->post('/registro/activacion', 'Web\Registro::confirmar');  */
 // $routes->get('/registro/testenvio', 'Web\Registro::testenvio');
 
 
 
-$routes->group('panel', ['filter' => 'Panelsesion'], static function ($routes) {
+/* $routes->group('panel', ['filter' => 'Panelsesion'], static function ($routes) {
 	$routes->get('', 'Web\Panel::index');
 	$routes->get('pagos/(:any)/(:any)', 'Web\Panel::pagos/$1/$2');
 	$routes->get('registro', 'Web\Panel::editarregistro');
@@ -286,8 +286,8 @@ $routes->group('panel', ['filter' => 'Panelsesion'], static function ($routes) {
 	$routes->get('listafovortos/(:any)/(:any)', 'Web\Guia::listafavoritos/$1/$2');
 	$routes->post('listafovortos', 'Web\Guia::guadarfavoritos');
 });
-
-$routes->get('agendainterna/(:any)', 'Web\Panel::agendainterna/$1');
+ */
+/* $routes->get('agendainterna/(:any)', 'Web\Panel::agendainterna/$1');
 $routes->get('agendainternatest/(:any)', 'Web\Panel::agendainternatest/$1');
 $routes->get('agenda1/(:any)', 'Web\Panel::agenda1/$1');
 $routes->get('agenda2/(:any)', 'Web\Panel::agenda2/$1');
@@ -310,7 +310,7 @@ $routes->get('/changelang', function () {
 	}
 	set_cookie($cookie);
 	echo "<script>window.history.back();</script>";
-});
+}); */
 
 /*
  * --------------------------------------------------------------------
